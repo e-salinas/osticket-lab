@@ -125,12 +125,12 @@ This lab gave me experience with:
 - Separating user-facing replies from internal technical notes
 - Writing down the symptoms, troubleshooting, root cause, fix, and user confirmation
 
-Someone else should be able to read and understand what the user reported, what the technician checked, what caused the problem, what fixed it, and how the fix was verified, so this was great practice documenting these steps to see how a ticket becomes a final product.
+A good ticket should allow someone else to understand what the user reported, what the technician checked, what caused the problem, what fixed it, and how the fix was verified. This lab gave me good practice documenting that entire process.
 
 ## Project files
 
 - `compose.yaml` contains the Docker configuration.
-- `.env` contains private passwords and is excluded from GitHub.
+- `.env` contains private configuration values and is excluded from GitHub.
 - `screenshots/` contains the evidence from the lab.
 
 
