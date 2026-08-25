@@ -132,7 +132,7 @@ Someone else should be able to read and understand what the user reported, what 
 - `compose.yaml` contains the Docker configuration.
 - `.env` contains private passwords and is excluded from GitHub.
 - `screenshots/` contains the evidence from the lab.
-- `documentation/` is available for additional ticket notes.
+
 
 To start the lab again, I open Docker Desktop, change to the project folder, and run:
 
