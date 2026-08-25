@@ -1,0 +1,72 @@
+services:
+  osticket:
+    image: rinkp/osticket-dockerized:main
+    restart: unless-stopped
+
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
+    environment:
+      OST_SECRET_SALT: ${OST_SECRET_SALT}
+      OST_ADMIN_EMAIL: ${OST_ADMIN_EMAIL}
+      OST_ADMIN_PASSWD: ${OST_ADMIN_PASSWORD}
+      OST_HELPDESK_URL: http://localhost:8080
+      OST_HELPDESK_ONLINE: "true"
+
+      OST_DBTYPE: mysql
+      OST_DBHOST: mariadb
+      OST_DBNAME: ${DB_NAME}
+      OST_DBUSER: ${DB_USER}
+      OST_DBPASS: ${DB_PASSWORD}
+      OST_TABLE_PREFIX: ost_
+      OST_SESSION_BACKEND: db
+
+      PHP_OPCACHE_MEMORY_CONSUMPTION: "128"
+
+    ports:
+      - "127.0.0.1:8080:80"
+
+    volumes:
+      - osticket_attachments:/var/www/attachments
+
+    networks:
+      - helpdesk_network
+
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  mariadb:
+    image: mariadb:11.8
+    restart: unless-stopped
+
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: "yes"
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+    networks:
+      - helpdesk_network
+
+volumes:
+  mariadb_data:
+  osticket_attachments:
+
+networks:
+  helpdesk_network:
+    driver: bridge
