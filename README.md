@@ -129,10 +129,30 @@ A good ticket should allow someone else to understand what the user reported, wh
 
 ## Project files
 
-- `compose.yaml` contains the Docker configuration.
-- `.env` contains private configuration values and is excluded from GitHub.
-- `screenshots/` contains the evidence from the lab.
+- `compose.yaml` defines the application, database, networking, volumes, and health checks.
+- `.env.example` documents the required configuration variables using placeholders.
+- `.env` contains the local configuration values and is excluded from GitHub.
+- `screenshots/` contains evidence from the lab.
 
+  ### Configuration for a fresh setup
+
+Copy the example configuration:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and replace all `CHANGE_ME` values. Use separate passwords for the database user and osTicket administrator.
+
+Generate a random secret salt with:
+
+```bash
+openssl rand -hex 32
+```
+
+Paste the generated value into `OST_SECRET_SALT`. Keep the completed `.env` file private.
+
+These instructions are for a fresh setup. Preserve the existing `.env` when restarting an established lab because its values correspond to the saved application and database.
 
 To start the lab again, I open Docker Desktop, change to the project folder, and run:
 
