@@ -41,6 +41,8 @@ I also created three SLA plans:
 - High Priority: 8 hours
 - Standard Support: 24 hours
 
+I configured these SLA plans to practice assigning service targets to different types of requests. The tickets were completed across separate lab sessions, so their timestamps do not represent measured support performance. One captured ticket is marked overdue, showing how osTicket flags a missed deadline.
+
 ![SLA plans](screenshots/04-sla-plans.png)
 
 ## Help Topics
@@ -74,7 +76,7 @@ This helped me understand that an application can be working even when its conta
 
 ## Ticket examples
 
-I completed three tickets covering network support, account support, and security.
+I created and worked through three fictional tickets covering network support, account support, and security. The records demonstrate documentation and ticket workflow; the account actions, user confirmations, and security-response actions described in them are simulated.
 
 ![Closed ticket queue](screenshots/06-closed-ticket-queue.png)
 
