@@ -86,7 +86,7 @@ The troubleshooting notes showed that her workstation had a 169.254 APIPA addres
 
 The port was corrected to VLAN 30 and the workstation renewed its DHCP lease. It received `192.168.30.11/24` with gateway `192.168.30.1`. Olivia confirmed that the shared drive and inventory application worked again before the ticket was closed.
 
-This ticket was based on my separate Packet Tracer network lab. Packet Tracer and osTicket were not actually connected.
+This fictional ticket was inspired by troubleshooting in my separate Packet Tracer network lab. It uses a different example addressing plan: Operations is VLAN 30 with subnet 192.168.30.0/24. In the published network lab, Operations is VLAN 20 and IT is VLAN 30. Packet Tracer and osTicket were not connected.
 
 ![Network support ticket](screenshots/07-network-ticket.png)
 
