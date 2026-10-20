@@ -1,2 +1,5 @@
-.env
+# Local environment configuration
 .DS_Store
+.env
+.env.*
+!.env.example
